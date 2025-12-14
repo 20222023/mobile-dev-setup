@@ -1,0 +1,30 @@
+═══════════════════════════════════════════════════════
+  QUICK SSH SETUP - COPY AND PASTE THESE COMMANDS
+═══════════════════════════════════════════════════════
+
+1. Right-click PowerShell → "Run as Administrator"
+
+2. Copy and paste ALL of these commands:
+
+───────────────────────────────────────────────────────
+
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Start-Service sshd
+Set-Service -Name sshd -StartupType 'Automatic'
+New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+$ip = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -notlike "127.*" -and $_.IPAddress -notlike "169.254.*"} | Select-Object -First 1).IPAddress
+Write-Host ""
+Write-Host "=== SSH Setup Complete! ===" -ForegroundColor Green
+Write-Host "Connect from mobile using:" -ForegroundColor Cyan
+Write-Host "  Host: $ip" -ForegroundColor White
+Write-Host "  Port: 22" -ForegroundColor White
+Write-Host "  Username: $env:USERNAME" -ForegroundColor White
+Write-Host "  Password: Your Windows password" -ForegroundColor White
+
+───────────────────────────────────────────────────────
+
+3. Install Termius app on your phone
+4. Connect using the details shown above
+
+═══════════════════════════════════════════════════════
+

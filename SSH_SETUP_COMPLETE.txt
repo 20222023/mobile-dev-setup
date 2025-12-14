@@ -1,0 +1,58 @@
+═══════════════════════════════════════════════════════════════
+  SSH SETUP - COMPLETE CONFIGURATION
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Run Complete Setup (As Administrator)
+─────────────────────────────────────────────
+1. Right-click PowerShell → "Run as Administrator"
+2. Navigate: cd D:\CURSORAITEST
+3. Run: .\complete_ssh_setup.ps1
+
+This will:
+  ✓ Generate SSH keys
+  ✓ Configure SSH server
+  ✓ Enable key authentication
+  ✓ Save all settings to ssh_config.json
+
+STEP 2: Start Monitoring (Keep Running)
+───────────────────────────────────────
+In the SAME PowerShell window (or new one):
+  .\monitor_ssh_connection.ps1
+
+This script will:
+  ✓ Monitor SSH connections
+  ✓ Show your public key
+  ✓ Display connection status
+  ✓ Alert when you connect
+  ✓ Keep running until you authenticate
+
+STEP 3: Configure Termius App
+──────────────────────────────
+1. Open Termius on your phone
+2. Go to Settings → SSH Keys → Add
+3. Paste the public key shown by monitor script
+4. Add new host:
+   - Hostname: (shown in monitor)
+   - Port: 22
+   - Username: (shown in monitor)
+   - Authentication: Select "Key" → Choose your key
+5. Connect!
+
+STEP 4: Watch the Monitor
+─────────────────────────
+The monitor script will show:
+  - Service status
+  - Port status
+  - Active connections
+  - Success message when you connect!
+
+═══════════════════════════════════════════════════════════════
+
+QUICK START:
+1. Run complete_ssh_setup.ps1 (as Admin)
+2. Run monitor_ssh_connection.ps1 (keep it running)
+3. Add key to Termius and connect
+4. Watch monitor for success message!
+
+═══════════════════════════════════════════════════════════════
+
